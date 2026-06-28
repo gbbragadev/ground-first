@@ -1,0 +1,12 @@
+# Windows reserved-name phantom (created by git-bash redirects, harmless)
+nul
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# eval run outputs (local only)
+evals/results/

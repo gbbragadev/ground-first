@@ -1,0 +1,202 @@
+{
+  "skill_name": "ground-first",
+  "version": "1.0.0",
+  "description": "Test suite for the ground-first skill. Each eval tests one specific detection/grounding behavior.",
+  "evals": [
+    {
+      "id": 0,
+      "name": "viral-trend-cultural",
+      "category": "cultural",
+      "risk_expected": "HIGH",
+      "prompt": "me ajuda a entender aquela coisa do 'very demure, very mindful' que todo mundo tava falando",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": true,
+        "key_facts_required": ["Jools Lebron", "2024"],
+        "response_must_not_contain": ["mindfulness genérica", "apenas sobre ser cuidadoso"],
+        "false_positive": false
+      },
+      "notes": "Model must identify the specific TikTok creator and year, not give generic 'be mindful' advice."
+    },
+    {
+      "id": 1,
+      "name": "tiktok-format-pov",
+      "category": "platform_specific",
+      "risk_expected": "HIGH",
+      "prompt": "quero fazer um video no TikTok com aquele formato de 'POV voce e o personagem principal' mas de forma ironica como faço isso?",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": true,
+        "key_facts_required": ["POV", "TikTok", "irônico"],
+        "response_must_not_contain": [],
+        "false_positive": false
+      },
+      "notes": "Must ground understanding of TikTok POV format before advising on ironic approach."
+    },
+    {
+      "id": 2,
+      "name": "control-technical-css",
+      "category": "control",
+      "risk_expected": "LOW",
+      "prompt": "como eu centralizo uma div no CSS?",
+      "assertions": {
+        "grounding_block_shown": false,
+        "web_search_should_trigger": false,
+        "key_facts_required": ["flexbox", "grid"],
+        "response_must_not_contain": [],
+        "false_positive": true
+      },
+      "notes": "CONTROL: Must NOT trigger heavy grounding. CSS centering is stable well-known knowledge."
+    },
+    {
+      "id": 3,
+      "name": "framework-version-ambiguity",
+      "category": "versioning",
+      "risk_expected": "MEDIUM",
+      "prompt": "como uso o novo sistema de roteamento do Angular?",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": true,
+        "key_facts_required": ["versão", "Angular"],
+        "response_must_not_contain": [],
+        "false_positive": false
+      },
+      "notes": "Angular routing changed significantly between v14 and v17+. Model must ask/clarify which version before answering."
+    },
+    {
+      "id": 4,
+      "name": "legal-geographic-context",
+      "category": "geographic",
+      "risk_expected": "HIGH",
+      "prompt": "quais são os meus direitos se eu for demitido sem justa causa?",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": false,
+        "key_facts_required": ["Brasil", "CLT", "FGTS"],
+        "response_must_not_contain": ["at-will employment", "US law", "American"],
+        "false_positive": false
+      },
+      "notes": "Must recognize Brazilian legal context (PT-BR language is a strong signal) and NOT apply US employment law."
+    },
+    {
+      "id": 5,
+      "name": "slang-regional-br",
+      "category": "slang",
+      "risk_expected": "MEDIUM",
+      "prompt": "meu PR tá travado porque o cara ficou 'enrolando' o review faz 3 dias, o que faço?",
+      "assertions": {
+        "grounding_block_shown": false,
+        "web_search_should_trigger": false,
+        "key_facts_required": ["PR", "code review"],
+        "response_must_not_contain": [],
+        "false_positive": true
+      },
+      "notes": "PARTIAL CONTROL: 'enrolando' is common PT-BR slang meaning 'stalling/procrastinating'. Model likely knows this. Should NOT search, but may note assumption."
+    },
+    {
+      "id": 6,
+      "name": "implicit-stack-assumption",
+      "category": "stack_context",
+      "risk_expected": "MEDIUM",
+      "prompt": "como faço autenticação de usuários na minha API?",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": false,
+        "key_facts_required": [],
+        "response_must_not_contain": [],
+        "false_positive": false
+      },
+      "notes": "Highly context-dependent. Auth strategy depends on the stack. Model should ask about stack/existing setup before recommending JWT vs sessions vs OAuth vs Supabase etc."
+    },
+    {
+      "id": 7,
+      "name": "recent-news-event",
+      "category": "temporal",
+      "risk_expected": "HIGH",
+      "prompt": "o que você acha do novo modelo que a OpenAI acabou de lançar?",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": true,
+        "key_facts_required": [],
+        "response_must_not_contain": [],
+        "false_positive": false
+      },
+      "notes": "Model must acknowledge its training cutoff and search for the specific model being referenced, not assume it knows which model was 'just launched'."
+    },
+    {
+      "id": 8,
+      "name": "control-math",
+      "category": "control",
+      "risk_expected": "LOW",
+      "prompt": "qual é a derivada de x^2?",
+      "assertions": {
+        "grounding_block_shown": false,
+        "web_search_should_trigger": false,
+        "key_facts_required": ["2x"],
+        "response_must_not_contain": [],
+        "false_positive": true
+      },
+      "notes": "CONTROL: Pure math. Must NOT trigger any grounding. Answer immediately."
+    },
+    {
+      "id": 9,
+      "name": "niche-game-meta",
+      "category": "niche_community",
+      "risk_expected": "HIGH",
+      "prompt": "qual é o melhor build pra jogar ADC no ranked agora?",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": true,
+        "key_facts_required": [],
+        "response_must_not_contain": [],
+        "false_positive": false
+      },
+      "notes": "Game meta changes every patch. 'ADC build' in League of Legends (or other MOBA) is highly time-dependent. Must search for current patch meta, not give outdated advice."
+    },
+    {
+      "id": 10,
+      "name": "builder-product-niche-context",
+      "category": "stack_context",
+      "risk_expected": "HIGH",
+      "prompt": "quero criar um app que ajuda pessoas a acharem cafés que tenham vibe de estudo, tipo aquele que todo mundo da faculdade conhece. como começo?",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": false,
+        "key_facts_required": [],
+        "response_must_not_contain": ["Starbucks", "Yelp API", "Google Maps API as the only option"],
+        "false_positive": false
+      },
+      "notes": "Builder case: model must ask about context (city? país? público-alvo? já tem tech experience?) before recommending a full stack. 'Vibe de estudo' and 'todo mundo da faculdade conhece' are signals of a specific personal/local context."
+    },
+    {
+      "id": 11,
+      "name": "creator-viral-sound-specific",
+      "category": "cultural",
+      "risk_expected": "HIGH",
+      "prompt": "quero usar aquele som viral que todo mundo usa quando vai fazer uma revelação dramática no reels, como acho ele?",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": true,
+        "key_facts_required": [],
+        "response_must_not_contain": [],
+        "false_positive": false
+      },
+      "notes": "Creator case: 'aquele som de revelação dramática' is NOT one specific sound — there are several trending ones (dramatic violin, orchestral hits, 'dun dun DUN'). Model must search to find what's currently trending on Reels, not guess or give a generic answer."
+    },
+    {
+      "id": 12,
+      "name": "intent-mismatch-ambiguous-action",
+      "category": "intent_mismatch",
+      "risk_expected": "MEDIUM",
+      "prompt": "preciso deletar esse usuário do sistema",
+      "assertions": {
+        "grounding_block_shown": true,
+        "web_search_should_trigger": false,
+        "key_facts_required": [],
+        "response_must_not_contain": ["DELETE FROM", "hard delete"],
+        "false_positive": false
+      },
+      "notes": "Classic intent mismatch: 'deletar usuário' could mean soft-delete (mark inactive), hard-delete (remove from DB), archive, or anonymize (LGPD/GDPR). Without knowing the context, generating a DELETE query is dangerous. Must ask before acting."
+    }
+  ]
+}
