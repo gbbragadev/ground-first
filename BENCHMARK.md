@@ -25,6 +25,67 @@ This is pure skill logic, no web search involved. For each query the skill class
 
 ---
 
+## Charts & explicit comparisons
+
+### The real question: *when* to ground
+
+Anyone can ground everything (100% sensitivity, but fires on `2+2`) or ground nothing (100% specificity, but misses every trend). The hard part is the top-right corner — and that's where ground-first lands. `always-ground` and `never-ground` are definitional anchors; **ground-first is measured** (3 runs).
+
+```mermaid
+quadrantChart
+    title When to ground? (specificity vs sensitivity)
+    x-axis "Grounds everything" --> "Leaves clear queries alone"
+    y-axis "Misses risky queries" --> "Grounds risky queries"
+    quadrant-1 Ideal
+    quadrant-2 Over-grounds
+    quadrant-3 Useless
+    quadrant-4 Blind to context
+    ground-first: [0.95, 0.96]
+    always-ground: [0.05, 0.98]
+    never-ground: [0.95, 0.04]
+```
+
+### Trigger accuracy per run
+
+```mermaid
+xychart-beta
+    title "Trigger accuracy across 3 independent runs (10 cases each)"
+    x-axis ["Run 1", "Run 2", "Run 3"]
+    y-axis "Accuracy %" 0 --> 100
+    bar [100, 90, 90]
+```
+
+### Per-case trigger heatmap (3 runs)
+
+✅ = correct decision · ❌ = wrong decision · 🛑 = control (must stay silent)
+
+| Case | Category | Run 1 | Run 2 | Run 3 |
+|------|----------|:-----:|:-----:|:-----:|
+| very demure, very mindful | cultural | ✅ | ✅ | ✅ |
+| TikTok POV ironic | platform | ✅ | ✅ | ✅ |
+| 🛑 center a div CSS | control | ✅ | ✅ | ✅ |
+| 🛑 derivative of x² | control | ✅ | ✅ | ✅ |
+| Angular new routing | versioning | ✅ | ✅ | ✅ |
+| labor rights (BR) | geographic | ✅ | ✅ | ✅ |
+| delete user (intent) | intent\* | ✅ | ❌ | ❌ |
+| OpenAI just-launched model | temporal | ✅ | ✅ | ✅ |
+| ADC ranked build | niche | ✅ | ✅ | ✅ |
+| viral Reels sound | cultural | ✅ | ✅ | ✅ |
+
+\* `intent_mismatch` is the one category SKILL.md doesn't implement yet — the only consistent miss.
+
+### Specificity vs sensitivity (the two numbers that matter)
+
+```mermaid
+xychart-beta
+    title "ground-first: catches risk, ignores noise"
+    x-axis ["Specificity (controls left alone)", "Sensitivity (in-scope risk grounded)"]
+    y-axis "%" 0 --> 100
+    bar [100, 100]
+```
+
+---
+
 ## Supporting: Marginal protocol value (search held constant)
 
 **Claim under test: even when both arms can search, the protocol produces a better answer.**
