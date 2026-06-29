@@ -36,6 +36,7 @@
 <p align="center">
   <a href="#where-this-came-from">Origin</a> ·
   <a href="#see-it-in-action">See it</a> ·
+  <a href="#proof-of-value-log">Proof log</a> ·
   <a href="#how-it-works-30-seconds">How it works</a> ·
   <a href="#get-started-60-seconds">Get started</a> ·
   <a href="#when-to-use-it-and-when-not-to">When to use</a> ·
@@ -100,6 +101,30 @@ AI:   ┌─ GROUNDING ───────────────────
 ```
 
 You can correct a wrong interpretation in five words. You can't un-read a 500-word answer built on the wrong premise.
+
+## Proof-of-value log
+
+ground-first is **in testing — earning its keep, not assuming it.** This log tracks every round of the benchmark: each iteration tests the skill *harder*, and the honest number is recorded right next to *how hard the test was*. The day that number stops moving — the skill's ceiling — a final verdict gets written here: was this actually worth it, or not? Full detail per round in [BENCHMARK.md](BENCHMARK.md).
+
+| Round | Date | Vendors | Cases | Runs | Labels | Specificity | Balanced acc | Cross-vendor | Honest weakness |
+|---|---|---|---|---|---|---|---|---|---|
+| **v1** · pilot | 2026-06-28 | 1 (Sonnet 4.6) | 10 | 1 | opinion | 100% | 100%\* | — | One model, one run, only easy in-scope cases. A flattering number, not proof. |
+| **v2** · cross-vendor | 2026-06-29 | 6 (Anthropic · OpenAI · Google · xAI · Z.ai · DeepSeek) | 36 | 3 | objective rubric, held-out split | **0.94–1.00** | **0.75** pooled · 0.905 scoped | 78% unanimous · 96% stable | Sensitivity 0.52 pooled; `intent_mismatch` 0%, `stack_context` 6%, `geographic` 11% across *all* vendors. |
+| **v3** · … | — | _harder still_ | — | — | — | — | — | — | _next round — just append a row_ |
+| **Verdict** | TBD | — | — | — | — | — | — | plateau? | 🔒 written when the number stops climbing: *did ground-first earn its place, or not?* |
+
+<sub>\* v1's 100% was specificity **and** sensitivity — but on a tiny, single-model, easy-cases set. v2 is what survives a hard test.</sub>
+
+**Why 100% → 0.75 is maturation, not regression.** v1 scored 100% because the test was *weak*: one model, one run, only the obvious "trending" cases. v2 put the **same skill** through 648 calls across six independent vendors (one byte-identical harness — only the model id changes), objective labels, and a held-out split. Under that scrutiny **specificity held at 0.94–1.00 on every vendor** — "stays out of the way" is now cross-vendor fact, not one model's good day. The new, lower headline is honest **sensitivity** finally being measured on hard categories v1 never touched. Rigor went up; the number came down to the truth. That's the whole point — a benchmark that only flatters the tool is marketing, and the first skeptic breaks it.
+
+**What v2 actually proved**
+
+- **Stays quiet when it should** — specificity 0.94–1.00 across all 6 vendors, the cleanest result.
+- **Strong where it's aimed** — balanced accuracy **0.905** (held-out test 0.875) on the trend / slang / recency / niche categories the skill targets.
+- **Honest weak spot** — three categories barely fire on *any* vendor; six-vendor unanimity hints they need a *clarifying question*, not a web search (the skill quietly bundles two different actions). Roadmap, stated openly.
+- **Marginal quality win** — blind 3-judge panel: the skill won 3/5 head-to-heads and was judged more honest in 4/5.
+
+**The endpoint.** This is a *prove-the-value* project, so it has a real stop condition: when balanced accuracy stops climbing across rounds, the `Verdict` row above gets filled in — as honestly as the data demands. Strong plateau → "ship it." Weak plateau → "it wasn't worth the complexity." Mixed → the tradeoff named out loud. No moving goalposts.
 
 ## What it does
 
