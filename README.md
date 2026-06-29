@@ -246,8 +246,8 @@ quadrantChart
     quadrant-2 Over-grounds
     quadrant-3 Useless
     quadrant-4 Blind to context
-    ground-first (scoped): [0.97, 0.83]
-    ground-first (all cats): [0.97, 0.52]
+    ground-first scoped: [0.97, 0.83]
+    ground-first all-cats: [0.97, 0.52]
     always-ground: [0.05, 0.98]
     never-ground: [0.97, 0.04]
 ```
