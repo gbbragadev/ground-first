@@ -1,0 +1,681 @@
+{
+  "source": "detection_results.json",
+  "n_responses": 648,
+  "models": [
+    {
+      "label": "claude-sonnet-4.6",
+      "vendor": "Anthropic",
+      "model": "anthropic/claude-sonnet-4.6"
+    },
+    {
+      "label": "gpt-5.5",
+      "vendor": "OpenAI",
+      "model": "openai/gpt-5.5"
+    },
+    {
+      "label": "gemini-3.1-pro",
+      "vendor": "Google",
+      "model": "google/gemini-3.1-pro-preview"
+    },
+    {
+      "label": "grok-4.3",
+      "vendor": "xAI",
+      "model": "x-ai/grok-4.3"
+    },
+    {
+      "label": "glm-5.2",
+      "vendor": "Z.ai",
+      "model": "z-ai/glm-5.2"
+    },
+    {
+      "label": "deepseek-v4-flash",
+      "vendor": "DeepSeek",
+      "model": "deepseek/deepseek-v4-flash"
+    }
+  ],
+  "per_model": {
+    "claude-sonnet-4.6": {
+      "vendor": "Anthropic",
+      "coverage": "108/108",
+      "n": 108,
+      "tp": 33,
+      "fp": 3,
+      "tn": 51,
+      "fn": 21,
+      "sensitivity": 0.6111,
+      "specificity": 0.9444,
+      "accuracy": 0.7778,
+      "balanced_acc": 0.7778
+    },
+    "gpt-5.5": {
+      "vendor": "OpenAI",
+      "coverage": "108/108",
+      "n": 108,
+      "tp": 35,
+      "fp": 0,
+      "tn": 54,
+      "fn": 19,
+      "sensitivity": 0.6481,
+      "specificity": 1.0,
+      "accuracy": 0.8241,
+      "balanced_acc": 0.8241
+    },
+    "gemini-3.1-pro": {
+      "vendor": "Google",
+      "coverage": "108/108",
+      "n": 108,
+      "tp": 33,
+      "fp": 0,
+      "tn": 54,
+      "fn": 21,
+      "sensitivity": 0.6111,
+      "specificity": 1.0,
+      "accuracy": 0.8056,
+      "balanced_acc": 0.8056
+    },
+    "grok-4.3": {
+      "vendor": "xAI",
+      "coverage": "108/108",
+      "n": 108,
+      "tp": 28,
+      "fp": 2,
+      "tn": 52,
+      "fn": 26,
+      "sensitivity": 0.5185,
+      "specificity": 0.963,
+      "accuracy": 0.7407,
+      "balanced_acc": 0.7407
+    },
+    "glm-5.2": {
+      "vendor": "Z.ai",
+      "coverage": "108/108",
+      "n": 108,
+      "tp": 23,
+      "fp": 0,
+      "tn": 54,
+      "fn": 31,
+      "sensitivity": 0.4259,
+      "specificity": 1.0,
+      "accuracy": 0.713,
+      "balanced_acc": 0.713
+    },
+    "deepseek-v4-flash": {
+      "vendor": "DeepSeek",
+      "coverage": "108/108",
+      "n": 108,
+      "tp": 17,
+      "fp": 1,
+      "tn": 53,
+      "fn": 37,
+      "sensitivity": 0.3148,
+      "specificity": 0.9815,
+      "accuracy": 0.6481,
+      "balanced_acc": 0.6481
+    }
+  },
+  "per_split": {
+    "dev": {
+      "claude-sonnet-4.6": {
+        "n": 72,
+        "tp": 24,
+        "fp": 3,
+        "tn": 33,
+        "fn": 12,
+        "sensitivity": 0.6667,
+        "specificity": 0.9167,
+        "accuracy": 0.7917,
+        "balanced_acc": 0.7917
+      },
+      "gpt-5.5": {
+        "n": 72,
+        "tp": 23,
+        "fp": 0,
+        "tn": 36,
+        "fn": 13,
+        "sensitivity": 0.6389,
+        "specificity": 1.0,
+        "accuracy": 0.8194,
+        "balanced_acc": 0.8194
+      },
+      "gemini-3.1-pro": {
+        "n": 72,
+        "tp": 21,
+        "fp": 0,
+        "tn": 36,
+        "fn": 15,
+        "sensitivity": 0.5833,
+        "specificity": 1.0,
+        "accuracy": 0.7917,
+        "balanced_acc": 0.7917
+      },
+      "grok-4.3": {
+        "n": 72,
+        "tp": 20,
+        "fp": 2,
+        "tn": 34,
+        "fn": 16,
+        "sensitivity": 0.5556,
+        "specificity": 0.9444,
+        "accuracy": 0.75,
+        "balanced_acc": 0.75
+      },
+      "glm-5.2": {
+        "n": 72,
+        "tp": 16,
+        "fp": 0,
+        "tn": 36,
+        "fn": 20,
+        "sensitivity": 0.4444,
+        "specificity": 1.0,
+        "accuracy": 0.7222,
+        "balanced_acc": 0.7222
+      },
+      "deepseek-v4-flash": {
+        "n": 72,
+        "tp": 11,
+        "fp": 1,
+        "tn": 35,
+        "fn": 25,
+        "sensitivity": 0.3056,
+        "specificity": 0.9722,
+        "accuracy": 0.6389,
+        "balanced_acc": 0.6389
+      }
+    },
+    "test": {
+      "claude-sonnet-4.6": {
+        "n": 36,
+        "tp": 9,
+        "fp": 0,
+        "tn": 18,
+        "fn": 9,
+        "sensitivity": 0.5,
+        "specificity": 1.0,
+        "accuracy": 0.75,
+        "balanced_acc": 0.75
+      },
+      "gpt-5.5": {
+        "n": 36,
+        "tp": 12,
+        "fp": 0,
+        "tn": 18,
+        "fn": 6,
+        "sensitivity": 0.6667,
+        "specificity": 1.0,
+        "accuracy": 0.8333,
+        "balanced_acc": 0.8333
+      },
+      "gemini-3.1-pro": {
+        "n": 36,
+        "tp": 12,
+        "fp": 0,
+        "tn": 18,
+        "fn": 6,
+        "sensitivity": 0.6667,
+        "specificity": 1.0,
+        "accuracy": 0.8333,
+        "balanced_acc": 0.8333
+      },
+      "grok-4.3": {
+        "n": 36,
+        "tp": 8,
+        "fp": 0,
+        "tn": 18,
+        "fn": 10,
+        "sensitivity": 0.4444,
+        "specificity": 1.0,
+        "accuracy": 0.7222,
+        "balanced_acc": 0.7222
+      },
+      "glm-5.2": {
+        "n": 36,
+        "tp": 7,
+        "fp": 0,
+        "tn": 18,
+        "fn": 11,
+        "sensitivity": 0.3889,
+        "specificity": 1.0,
+        "accuracy": 0.6944,
+        "balanced_acc": 0.6944
+      },
+      "deepseek-v4-flash": {
+        "n": 36,
+        "tp": 6,
+        "fp": 0,
+        "tn": 18,
+        "fn": 12,
+        "sensitivity": 0.3333,
+        "specificity": 1.0,
+        "accuracy": 0.6667,
+        "balanced_acc": 0.6667
+      }
+    }
+  },
+  "pooled": {
+    "dev": {
+      "n": 432,
+      "tp": 115,
+      "fp": 6,
+      "tn": 210,
+      "fn": 101,
+      "sensitivity": 0.5324,
+      "specificity": 0.9722,
+      "accuracy": 0.7523,
+      "balanced_acc": 0.7523
+    },
+    "test": {
+      "n": 216,
+      "tp": 54,
+      "fp": 0,
+      "tn": 108,
+      "fn": 54,
+      "sensitivity": 0.5,
+      "specificity": 1.0,
+      "accuracy": 0.75,
+      "balanced_acc": 0.75
+    },
+    "all": {
+      "n": 648,
+      "tp": 169,
+      "fp": 6,
+      "tn": 318,
+      "fn": 155,
+      "sensitivity": 0.5216,
+      "specificity": 0.9815,
+      "accuracy": 0.7515,
+      "balanced_acc": 0.7515
+    }
+  },
+  "per_category": {
+    "control": {
+      "n": 324,
+      "tp": 0,
+      "fp": 6,
+      "tn": 318,
+      "fn": 0,
+      "sensitivity": NaN,
+      "specificity": 0.9815,
+      "accuracy": 0.9815,
+      "balanced_acc": NaN
+    },
+    "cultural": {
+      "n": 36,
+      "tp": 36,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "sensitivity": 1.0,
+      "specificity": NaN,
+      "accuracy": 1.0,
+      "balanced_acc": NaN
+    },
+    "geographic": {
+      "n": 18,
+      "tp": 2,
+      "fp": 0,
+      "tn": 0,
+      "fn": 16,
+      "sensitivity": 0.1111,
+      "specificity": NaN,
+      "accuracy": 0.1111,
+      "balanced_acc": NaN
+    },
+    "intent_mismatch": {
+      "n": 54,
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 54,
+      "sensitivity": 0.0,
+      "specificity": NaN,
+      "accuracy": 0.0,
+      "balanced_acc": NaN
+    },
+    "niche_community": {
+      "n": 18,
+      "tp": 15,
+      "fp": 0,
+      "tn": 0,
+      "fn": 3,
+      "sensitivity": 0.8333,
+      "specificity": NaN,
+      "accuracy": 0.8333,
+      "balanced_acc": NaN
+    },
+    "platform_specific": {
+      "n": 18,
+      "tp": 13,
+      "fp": 0,
+      "tn": 0,
+      "fn": 5,
+      "sensitivity": 0.7222,
+      "specificity": NaN,
+      "accuracy": 0.7222,
+      "balanced_acc": NaN
+    },
+    "slang": {
+      "n": 54,
+      "tp": 53,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "sensitivity": 0.9815,
+      "specificity": NaN,
+      "accuracy": 0.9815,
+      "balanced_acc": NaN
+    },
+    "stack_context": {
+      "n": 54,
+      "tp": 3,
+      "fp": 0,
+      "tn": 0,
+      "fn": 51,
+      "sensitivity": 0.0556,
+      "specificity": NaN,
+      "accuracy": 0.0556,
+      "balanced_acc": NaN
+    },
+    "temporal": {
+      "n": 36,
+      "tp": 28,
+      "fp": 0,
+      "tn": 0,
+      "fn": 8,
+      "sensitivity": 0.7778,
+      "specificity": NaN,
+      "accuracy": 0.7778,
+      "balanced_acc": NaN
+    },
+    "versioning": {
+      "n": 36,
+      "tp": 19,
+      "fp": 0,
+      "tn": 0,
+      "fn": 17,
+      "sensitivity": 0.5278,
+      "specificity": NaN,
+      "accuracy": 0.5278,
+      "balanced_acc": NaN
+    }
+  },
+  "cross_vendor_agreement": {
+    "unanimous": 28,
+    "total": 36,
+    "rate": 0.7778,
+    "disagreements": [
+      {
+        "case_id": 1,
+        "votes": {
+          "claude-sonnet-4.6": "yes",
+          "gpt-5.5": "yes",
+          "glm-5.2": "no",
+          "gemini-3.1-pro": "yes",
+          "grok-4.3": "yes",
+          "deepseek-v4-flash": "no"
+        }
+      },
+      {
+        "case_id": 3,
+        "votes": {
+          "claude-sonnet-4.6": "no",
+          "gpt-5.5": "yes",
+          "gemini-3.1-pro": "yes",
+          "glm-5.2": "no",
+          "grok-4.3": "yes",
+          "deepseek-v4-flash": "no"
+        }
+      },
+      {
+        "case_id": 4,
+        "votes": {
+          "claude-sonnet-4.6": "no",
+          "gpt-5.5": "yes",
+          "gemini-3.1-pro": "no",
+          "grok-4.3": "no",
+          "glm-5.2": "no",
+          "deepseek-v4-flash": "no"
+        }
+      },
+      {
+        "case_id": 5,
+        "votes": {
+          "claude-sonnet-4.6": "yes",
+          "gpt-5.5": "no",
+          "glm-5.2": "no",
+          "gemini-3.1-pro": "no",
+          "grok-4.3": "yes",
+          "deepseek-v4-flash": "no"
+        }
+      },
+      {
+        "case_id": 9,
+        "votes": {
+          "claude-sonnet-4.6": "yes",
+          "gpt-5.5": "yes",
+          "grok-4.3": "yes",
+          "deepseek-v4-flash": "no",
+          "gemini-3.1-pro": "yes",
+          "glm-5.2": "yes"
+        }
+      },
+      {
+        "case_id": 10,
+        "votes": {
+          "claude-sonnet-4.6": "yes",
+          "gpt-5.5": "no",
+          "grok-4.3": "no",
+          "glm-5.2": "no",
+          "gemini-3.1-pro": "no",
+          "deepseek-v4-flash": "no"
+        }
+      },
+      {
+        "case_id": 29,
+        "votes": {
+          "claude-sonnet-4.6": "yes",
+          "gpt-5.5": "yes",
+          "grok-4.3": "no",
+          "gemini-3.1-pro": "yes",
+          "deepseek-v4-flash": "no",
+          "glm-5.2": "no"
+        }
+      },
+      {
+        "case_id": 34,
+        "votes": {
+          "claude-sonnet-4.6": "yes",
+          "gpt-5.5": "yes",
+          "gemini-3.1-pro": "yes",
+          "grok-4.3": "yes",
+          "glm-5.2": "no",
+          "deepseek-v4-flash": "no"
+        }
+      }
+    ]
+  },
+  "cross_run_consistency": {
+    "stable": 208,
+    "total": 216,
+    "rate": 0.963
+  },
+  "policy": {
+    "dev": {
+      "DIRECT": {
+        "n": 432,
+        "tp": 115,
+        "fp": 6,
+        "tn": 210,
+        "fn": 101,
+        "sensitivity": 0.5324,
+        "specificity": 0.9722,
+        "accuracy": 0.7523,
+        "balanced_acc": 0.7523
+      },
+      "RISK3": {
+        "n": 432,
+        "tp": 115,
+        "fp": 6,
+        "tn": 210,
+        "fn": 101,
+        "sensitivity": 0.5324,
+        "specificity": 0.9722,
+        "accuracy": 0.7523,
+        "balanced_acc": 0.7523
+      }
+    },
+    "test": {
+      "DIRECT": {
+        "n": 216,
+        "tp": 54,
+        "fp": 0,
+        "tn": 108,
+        "fn": 54,
+        "sensitivity": 0.5,
+        "specificity": 1.0,
+        "accuracy": 0.75,
+        "balanced_acc": 0.75
+      },
+      "RISK3": {
+        "n": 216,
+        "tp": 54,
+        "fp": 0,
+        "tn": 108,
+        "fn": 54,
+        "sensitivity": 0.5,
+        "specificity": 1.0,
+        "accuracy": 0.75,
+        "balanced_acc": 0.75
+      }
+    },
+    "direct_vs_risk3_disagree": {
+      "n": 0,
+      "of": 648,
+      "rate": 0.0
+    }
+  },
+  "scoped": {
+    "excluded_categories": [
+      "geographic",
+      "intent_mismatch",
+      "stack_context"
+    ],
+    "dev": {
+      "n": 342,
+      "tp": 110,
+      "fp": 6,
+      "tn": 210,
+      "fn": 16,
+      "sensitivity": 0.873,
+      "specificity": 0.9722,
+      "accuracy": 0.9357,
+      "balanced_acc": 0.9226
+    },
+    "test": {
+      "n": 180,
+      "tp": 54,
+      "fp": 0,
+      "tn": 108,
+      "fn": 18,
+      "sensitivity": 0.75,
+      "specificity": 1.0,
+      "accuracy": 0.9,
+      "balanced_acc": 0.875
+    },
+    "all": {
+      "n": 522,
+      "tp": 164,
+      "fp": 6,
+      "tn": 318,
+      "fn": 34,
+      "sensitivity": 0.8283,
+      "specificity": 0.9815,
+      "accuracy": 0.9234,
+      "balanced_acc": 0.9049
+    },
+    "per_model": {
+      "claude-sonnet-4.6": {
+        "n": 87,
+        "tp": 30,
+        "fp": 3,
+        "tn": 51,
+        "fn": 3,
+        "sensitivity": 0.9091,
+        "specificity": 0.9444,
+        "accuracy": 0.931,
+        "balanced_acc": 0.9268
+      },
+      "gpt-5.5": {
+        "n": 87,
+        "tp": 33,
+        "fp": 0,
+        "tn": 54,
+        "fn": 0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "accuracy": 1.0,
+        "balanced_acc": 1.0
+      },
+      "gemini-3.1-pro": {
+        "n": 87,
+        "tp": 33,
+        "fp": 0,
+        "tn": 54,
+        "fn": 0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "accuracy": 1.0,
+        "balanced_acc": 1.0
+      },
+      "grok-4.3": {
+        "n": 87,
+        "tp": 28,
+        "fp": 2,
+        "tn": 52,
+        "fn": 5,
+        "sensitivity": 0.8485,
+        "specificity": 0.963,
+        "accuracy": 0.9195,
+        "balanced_acc": 0.9057
+      },
+      "glm-5.2": {
+        "n": 87,
+        "tp": 23,
+        "fp": 0,
+        "tn": 54,
+        "fn": 10,
+        "sensitivity": 0.697,
+        "specificity": 1.0,
+        "accuracy": 0.8851,
+        "balanced_acc": 0.8485
+      },
+      "deepseek-v4-flash": {
+        "n": 87,
+        "tp": 17,
+        "fp": 1,
+        "tn": 53,
+        "fn": 16,
+        "sensitivity": 0.5152,
+        "specificity": 0.9815,
+        "accuracy": 0.8046,
+        "balanced_acc": 0.7483
+      }
+    }
+  },
+  "soft_category_trigger_rate": {
+    "geographic": {
+      "fired": 2,
+      "of": 18,
+      "rate": 0.1111
+    },
+    "intent_mismatch": {
+      "fired": 0,
+      "of": 54,
+      "rate": 0.0
+    },
+    "stack_context": {
+      "fired": 3,
+      "of": 54,
+      "rate": 0.0556
+    }
+  }
+}

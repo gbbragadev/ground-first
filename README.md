@@ -196,20 +196,21 @@ It's designed so the cost of being wrong about *when* to ground is low: on clear
 
 It started as a *cultural/trend* guardrail, but the same "check before you commit" reflex pays off well beyond that:
 
-- **Dev & versioning** — "the new Angular routing", "the latest app router" → don't answer for the API from two versions ago
-- **Fresh releases** — a model, library, or product launched after the cutoff (the exact trap in [Exhibit A](examples/caught-in-the-wild.md))
-- **Niche jargon** — game meta, fandom shorthand, industry/hobby slang that means something specific
-- **Regional & market context** — something specific to *your* country, market, or community, not the generic global default
-- **Your own project's language** — terms that mean one thing *in your world* and another everywhere else
-- **Ambiguous intent** — when a plausible-but-wrong reading exists ("delete the user" → soft-delete or hard-delete?)
+- **Dev & versioning** — "the new Angular routing", "the latest app router" → don't answer for the API from two versions ago *(measured: works)*
+- **Fresh releases** — a model, library, or product launched after the cutoff (the exact trap in [Exhibit A](examples/caught-in-the-wild.md)) *(measured: works)*
+- **Niche jargon** — game meta, fandom shorthand, industry/hobby slang that means something specific *(measured: works)*
+- **Ambiguous intent** 🚧 — a plausible-but-wrong reading exists ("delete the user" → soft-delete or hard-delete?). This is a *clarify-before-acting* reflex, a different action from web-grounding — and the [detection benchmark](BENCHMARK.md) shows the current DETECT logic rarely fires on it. Honest status: the prose handles it, the measured trigger doesn't reliably catch it yet.
+- **Regional / market context & your own project's language** 🚧 — something specific to *your* country, market, community, or codebase, not the generic global default. **Aspirational:** across all 6 benchmarked vendors this category barely triggers ([per-category data](BENCHMARK.md)) — on the roadmap, not yet proven.
 
 ## Benchmark
 
-Full results — including the warts — in [**BENCHMARK.md**](BENCHMARK.md). It's a directional pilot, reported honestly (a benchmark that only flatters the tool is marketing, and the first skeptic breaks it).
+Full results — including the warts — in [**BENCHMARK.md**](BENCHMARK.md). v2 scaled the pilot to **36 labeled cases × 6 vendors (Anthropic · OpenAI · Google · xAI · Z.ai · DeepSeek) × 3 runs = 648 calls through one byte-identical harness** — and the headline came *down* from the pilot's 100%. That's the point: a benchmark that only flatters the tool is marketing, and the first skeptic breaks it.
 
-**Headline (reproducible, no confound):** across 3 runs the skill correctly grounded **21/21** in-scope risky queries and correctly left **6/6** control queries (CSS, math) alone — **100% specificity, zero false-positive overhead.** It knows when to act *and* when to stay out of the way.
+**Headline (cross-vendor, no confound):** every vendor reliably **stays out of the way** — specificity **0.94–1.00** (controls like CSS and math left alone; the "zero false-positive overhead" claim, now proven across six independent models). On the trend / slang / recency categories the skill targets, **scoped balanced accuracy is 0.905** (held-out test **0.875**). Pooled across *all* categories it drops to **0.75**, dragged down by three categories (ambiguous-intent, stack-context, regional) that barely fire across **every** vendor — either a roadmap gap, or a sign those cases need a *clarifying question*, not a web search. [BENCHMARK.md](BENCHMARK.md) argues both readings honestly.
 
-**Honest caveat:** when both the skill and a plain search-enabled baseline can search, ground-first does **not** reliably produce better *facts*. What it buys is **calibrated honesty** (it's never confidently wrong) and **correctability** (you catch a bad read before the full answer) — not raw answer quality. The benchmark says so plainly.
+**Cross-vendor agreement:** the 6 independent vendors reach the **same** trigger decision on **78%** of cases; run-to-run consistency is **96%**. When five non-Anthropic models agree with Claude, "it's just grading its own skill" doesn't hold.
+
+**Quality (blind 3-judge panel):** when both the skill and a plain search baseline can search, ground-first wins the majority of head-to-heads (**3/5**) and is judged *more honest about uncertainty* in **4/5** — but its value is **calibrated honesty + correctability**, not raw answer quality. The benchmark says so plainly.
 
 ```mermaid
 quadrantChart
@@ -220,9 +221,10 @@ quadrantChart
     quadrant-2 Over-grounds
     quadrant-3 Useless
     quadrant-4 Blind to context
-    ground-first: [0.95, 0.96]
+    ground-first (scoped): [0.97, 0.83]
+    ground-first (all cats): [0.97, 0.52]
     always-ground: [0.05, 0.98]
-    never-ground: [0.95, 0.04]
+    never-ground: [0.97, 0.04]
 ```
 
 ## Token economy

@@ -2,6 +2,13 @@
 
 Anyone can add a test case. You don't need to know Python.
 
+> **Canonical set:** the detection benchmark now runs on [`cases.json`](cases.json) (36
+> cases, objective labels defined in [`RUBRIC.md`](RUBRIC.md), each with a `split`
+> dev/test and a `rationale` citing the rule). To add a **detection** case, add it there —
+> schema: `id`, `name`, `category`, `expected_trigger` (yes/no), `risk_expected`,
+> `prompt`, `rationale`, `split`. The `evals.json` format below is the v1 pilot set, kept
+> for the quality arm's frozen `key_facts`.
+
 ## Why test cases matter
 
 Each test case documents a real failure mode — a situation where the AI confidently answered the wrong question. The more test cases we have, the harder it is for the skill to regress silently.
@@ -18,7 +25,7 @@ Each test case in `evals.json` looks like this:
 {
   "id": 10,
   "name": "short-descriptive-name",
-  "category": "cultural | platform_specific | versioning | geographic | slang | stack_context | temporal | niche_community | control",
+  "category": "cultural | platform_specific | versioning | geographic | slang | stack_context | temporal | niche_community | intent_mismatch | control",
   "risk_expected": "HIGH | MEDIUM | LOW",
   "prompt": "the exact message you'd type to the AI",
   "assertions": {
@@ -58,6 +65,7 @@ Each test case in `evals.json` looks like this:
 | `stack_context` | Tech stack that wasn't specified |
 | `temporal` | Events after training cutoff |
 | `niche_community` | Game meta, fandom, hobby jargon |
+| `intent_mismatch` | Ambiguous request where a plausible-but-wrong reading exists ("delete the user" → soft or hard delete?) |
 | `control` | Clear questions where NO grounding is needed |
 
 ---

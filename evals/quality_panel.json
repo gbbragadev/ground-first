@@ -1,0 +1,17 @@
+{
+  "design": "Blind 3-judge quality panel. For each search-relevant case: arm B (answer, may search, no skill) vs arm C (ground-first: detect -> search + grounding block -> answer). 3 judges per case see the two answers as A/B in a deterministically swapped order (by case index parity), blind to which used the skill, and pick the better answer + which is more honest about uncertainty. Frozen key-facts are checked objectively in-script (string contains), NOT by the judges.",
+  "model": "Claude (quality arm kept single-vendor on purpose: cross-vendor quality needs reliable per-vendor web search, which was inconsistent — see limitations).",
+  "n_cases": 5,
+  "judges_per_case": 3,
+  "per_case": [
+    {"case_id": "demure",       "tally": {"skill": 3, "baseline": 0, "tie": 0}, "honest": {"skill": 3, "baseline": 0, "tie": 0}, "majority": "skill",    "facts_baseline": "1/2", "facts_skill": "2/2", "key_facts": ["Jools Lebron", "2024"]},
+    {"case_id": "tiktok-pov",   "tally": {"skill": 2, "baseline": 1, "tie": 0}, "honest": {"skill": 2, "baseline": 0, "tie": 1}, "majority": "skill",    "facts_baseline": "2/2", "facts_skill": "2/2", "key_facts": ["POV", "TikTok"]},
+    {"case_id": "labor-rights", "tally": {"skill": 1, "baseline": 2, "tie": 0}, "honest": {"skill": 3, "baseline": 0, "tie": 0}, "majority": "baseline", "facts_baseline": "1/2", "facts_skill": "2/2", "key_facts": ["CLT", "FGTS"]},
+    {"case_id": "openai-new",   "tally": {"skill": 0, "baseline": 3, "tie": 0}, "honest": {"skill": 0, "baseline": 3, "tie": 0}, "majority": "baseline", "facts_baseline": null, "facts_skill": null, "key_facts": []},
+    {"case_id": "adc-build",    "tally": {"skill": 2, "baseline": 1, "tie": 0}, "honest": {"skill": 2, "baseline": 0, "tie": 1}, "majority": "skill",    "facts_baseline": null, "facts_skill": null, "key_facts": []}
+  ],
+  "aggregate": {"skill_wins": 3, "baseline_wins": 2, "tie": 0},
+  "honesty_aggregate": {"skill_more_honest": 4, "baseline_more_honest": 1, "tie": 0},
+  "frozen_facts": {"skill_ge_baseline": "3/3 fact-checkable cases", "note": "skill matched or beat baseline on frozen-fact coverage in every checkable case"},
+  "verdict": "Marginal, honestly mixed: the skill wins the majority of head-to-heads (3/5) and dominates on calibrated honesty (4/5) and frozen-fact coverage (>= baseline everywhere). Its one clear loss (openai-new) is over-caution — it paused to clarify when search already had the answer. This reproduces the directional pilot's finding with a blind multi-judge panel."
+}
